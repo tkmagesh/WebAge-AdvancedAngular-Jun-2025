@@ -17,21 +17,24 @@
     window['addClient'] = addClient
 
     // async
-    function addAsync(x, y) {
+    function addAsync(x, y, callbackFn) {
       console.log("   [add] operation started");
       setTimeout(() => {
         var result = x + y;
         console.log("   [add] operation completed");
-        return result;  
+        // return result;  
+        callbackFn(result)
       }, 4000);
       
     }
 
     function addAsyncClient(x, y) {
       console.log("[addClient] operation initiated");
-      var result = addAsync(100, 200);
-      console.log("result =", result);
-      console.log("[addClient] operation done");
+      addAsync(x, y, function(result){
+        console.log("result =", result);
+        console.log("[addClient] operation done");
+      });
+      
     }
 
     window["addAsyncClient"] = addAsyncClient;
