@@ -51,27 +51,29 @@
 
   window["addAsyncPromise"] = addAsyncPromise;
 
-  function addAsyncPromiseClient(x, y) {
+  /* function addAsyncPromiseClient(x, y) {
     console.log("[addClient] operation initiated");
     var p = addAsyncPromise(x, y)
-    /* 
     p.then(function (result) {
       console.log("result =", result);
       console.log("[addClient] operation done");
     }); 
-    */
    return p
+  } */
+
+    // using async-await (high level language feature for "promise consumption")
+  async function addAsyncPromiseClient(x, y) {
+    console.log("[addClient] operation initiated");
+    /* 
+    var p = addAsyncPromise(100, 200);
+    var result = await p 
+    */
+    var result = await addAsyncPromise(100,200)
+    console.log("result =", result);
+    console.log("[addClient] operation done");
   }
 
-//   window["addAsyncPromiseClient"] = addAsyncPromiseClient;
+  window["addAsyncPromiseClient"] = addAsyncPromiseClient;
 
-  function calculatorView(){
-    var p = addAsyncPromiseClient(100,200)
-    p.then(function (result) {
-      console.log("result =", result);
-      console.log("[addClient] operation done");
-    }); 
-  }
-//   window["addAsyncPromiseClient"] = addAsyncPromiseClient;
-  window["calculatorView"] = calculatorView;
+  
 })()
