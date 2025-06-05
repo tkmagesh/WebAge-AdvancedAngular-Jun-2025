@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>
+        function doWork(){
+            // do some time consuming operation
+            for(var i = 0; i <10000; i++) {
+                for (var j = 0; j < 10000; j++){
+                    for (var k = 0; k < 300; k++){
+
+                    }
+                }
+            }
+        }
+
+        function displayMessage(msg){
+            document.getElementById('divMessages').innerHTML += msg + "<br/>"
+        }
+
+        function onBtnDoWorkClick(){
+            displayMessage("Work Started") // dom update, make an entry in the queue
+            setTimeout(function(){  // scheduling this function execution through the queue
+                doWork();
+                displayMessage("Work Completed") // dom update, make an entry in the queue
+            })
+        }
+
+        function onBtnClearClick(){
+            document.getElementById("divMessages").innerText = "Log cleared!!"
+        }
+        
+        function onDocumentLoad(){
+            var btnDoWork = document.getElementById('btnDoWork');
+            btnDoWork.addEventListener('click', onBtnDoWorkClick)
+
+            var btnClear = document.getElementById("btnClear")
+            btnClear.addEventListener("click", onBtnClearClick)
+        }
+        window.addEventListener("DOMContentLoaded", onDocumentLoad)
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <button id="btnDoWork">Do Work</button>
+    <button id="btnClear">Clear</button>
+    <div id="divMessages"></div>
+</body>
+</html>

@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Async Problems</title>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("btnClick").addEventListener('click', () => {
+                document.getElementById("divMessage").innerText = "Button Clicked"
+            })
+        })
+    </script>
 </head>
 <body>
-    
+    <button id="btnClick">Click Me</button>
+    <div id="divMessage"></div>
 </body>
 </html>
