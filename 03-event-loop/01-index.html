@@ -5,15 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <script>
-        function doWork(){
+        function doWork(onComplete){
             // do some time consuming operation
-            for(var i = 0; i <10000; i++) {
-                for (var j = 0; j < 10000; j++){
-                    for (var k = 0; k < 300; k++){
+            var totalIterations = 1000,
+                currentIteration = 0;
 
+            function oneIteration(){
+                for(var i = 0; i < (10000/totalIterations); i++) {
+                    for (var j = 0; j < 10000; j++){
+                        for (var k = 0; k < 300; k++){
+
+                        }
                     }
                 }
+                currentIteration++
+                console.log('Executed - ', currentIteration)
+                if (currentIteration < totalIterations){
+                    setTimeout(oneIteration)
+                    return
+                }
+                console.log('Done')
+                onComplete()
             }
+            oneIteration()
         }
 
         function displayMessage(msg){
@@ -22,10 +36,9 @@
 
         function onBtnDoWorkClick(){
             displayMessage("Work Started") // dom update, make an entry in the queue
-            setTimeout(function(){  // scheduling this function execution through the queue
-                doWork();
+            doWork(function(){
                 displayMessage("Work Completed") // dom update, make an entry in the queue
-            })
+            });
         }
 
         function onBtnClearClick(){
