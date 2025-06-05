@@ -68,7 +68,7 @@
     var p = addAsyncPromise(100, 200);
     var result = await p 
     */
-    var result = await addAsyncPromise(100,200)
+    var result = await addAsyncPromise(x,y)
     console.log("result =", result);
     console.log("[addClient] operation done");
   }
