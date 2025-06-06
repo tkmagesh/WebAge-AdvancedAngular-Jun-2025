@@ -1,0 +1,12 @@
+<h2>{{plate.title}}</h2>
+@if(plate.onSale){
+  <img src="assets/sale.png" />
+}
+<img class="img-fluid" [src]="plate.picture"/>
+<p>{{plate.description}}</p>
+<div>
+  <h2 class="float-left">{{plate.price | currencyRenderer:'GBP':1.5}}</h2>
+  <button class="btn btn-primary float-right" role="button" (click)="buttonClicked()">
+    {{buttonText}}
+  </button>
+</div>

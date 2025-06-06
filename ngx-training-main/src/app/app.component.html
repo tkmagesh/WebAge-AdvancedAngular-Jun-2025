@@ -1,0 +1,27 @@
+<!-- Insert navigation component here -->
+<app-navigation></app-navigation>
+
+<main role="main">
+ <!-- Insert jumbotron component here -->
+ <app-jumbotron title="Welcome to our store"
+    description="Browse our collection of license plates">
+
+ </app-jumbotron>
+
+ <div class="container">
+   <div class="row" >
+     
+     @for (myPlate of licensePlates; track myPlate._id) {
+        <app-license-plate 
+		[plate]="myPlate" buttonText="Add to cart" appHighlight
+           [style.backgroundColor]="$even ? '#F5F5F5': '' "
+           class="col-md-4" />
+     }
+   </div>
+ </div>
+</main>
+
+<footer class="container">
+ <p>&copy; License Plate Store 2023</p>
+</footer>
+
