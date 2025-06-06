@@ -4,7 +4,6 @@ import { Component, signal, computed, effect } from '@angular/core';
   selector: 'app-hello-signals',
   template: `
     <div>
-      <h2>Signals</h2>
       <hr/>
       <p>Count: {{ count() }}</p>
       <p>Doubled: {{ doubled() }}</p>

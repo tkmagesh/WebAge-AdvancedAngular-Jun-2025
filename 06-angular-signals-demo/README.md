@@ -141,3 +141,18 @@ import { untracked } from '@angular/core';
 const value = untracked(() => counter());
 ```
 
+
+
+## To run the application
+### Server
+```shell
+  cd server
+  npm install
+  npm start
+```
+
+### Client
+```shell
+  npm install
+  npm start
+```
