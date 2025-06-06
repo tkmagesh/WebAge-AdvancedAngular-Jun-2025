@@ -1,0 +1,8 @@
+<!-- Show login component if not logged in, otherwise show chat component -->
+@if (!isLoggedIn) {
+  <app-login (userJoined)="onUserJoined($event)"></app-login>
+} @else {
+  <app-chat></app-chat>
+}
+
+<router-outlet />
