@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Manager</title>
+    <!-- <script src="state-manager.js"></script> -->
+     <script src="redux.js"></script>
+    <script>
+        /* State management logic */
+        function counterReducer(currentState = 0, action){
+            if (action.type === 'INCREMENT')
+                return currentState + 1;
+            if (action.type === 'DECREMENT')
+                return currentState - 1;
+            return currentState;
+        }
+
+        // let store = StateManager.createStore(counterReducer);
+        let store = Redux.createStore(counterReducer);
+
+        function onBtnDecrementClick(){
+            let decrement_action = { type : 'DECREMENT' }
+            store.dispatch(decrement_action)
+        }
+
+        function onBtnIncrementClick(){
+            let increment_action = { type : 'INCREMENT' };
+            store.dispatch(increment_action)
+        }
+
+        function displayCounter(){
+            let current_counter_value = store.getState()
+            document.getElementById('spanCounter').innerText = current_counter_value;
+        }
+
+        function onDocumentLoad(){
+            document.getElementById('btnDecrement')
+                .addEventListener('click', onBtnDecrementClick)
+            document.getElementById('btnIncrement')
+                .addEventListener('click', onBtnIncrementClick)
+
+            displayCounter()
+            store.subscribe(displayCounter)
+        }
+        window.addEventListener('DOMContentLoaded', onDocumentLoad)
+    </script>
+</head>
+<body>
+    <h1>Counter</h1>
+    <hr>
+    <button id="btnDecrement">Decrement</button>
+    <span id="spanCounter"></span>
+    <button id="btnIncrement">Increment</button>
+</body>
+</html>
